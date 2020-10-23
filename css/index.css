@@ -24,15 +24,10 @@ body {
   text-align: center;
   padding: 10px;
   text-decoration: none;
-  font-size: 18px; 
+  font-size: 15px; 
   line-height: 20px;
   border-radius: 4px;
 }
-
-/* .header p.slider {
-  font-size: 25px;
-  font-weight: bold;
-} */
 .header-right p:hover {
   background-color: #ddd;
   color: black;
@@ -41,11 +36,13 @@ body {
 
 .action p {
   outline: black;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .action p:hover {
   cursor: pointer;
+  font-size: 18px;
+  color: #4CAF50;
 }
 
 .header p.active {
@@ -55,6 +52,10 @@ body {
 
 .header-right {
   float: right;
+}
+
+.header-right p{
+  font-size: 18px;
 }
 
 .slider {
@@ -80,11 +81,3 @@ body {
   background: #4CAF50;
   cursor: pointer;
 }
-/*
-.sd{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    margin: auto;
-    background-color: blue;
-} */
