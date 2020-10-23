@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sort Order</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/graph.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="slider-container">
+            <p>
+                No of Elements<br>
+                <input type="range" min="1" max="100" value="20" class="slider" id="slider">
+            </p>
+            <p>
+                Speed<br>
+                <input type="range" min="1" max="100" value="80" class="slider" id="speed">
+            </p>
+        </div>
+        <div class="action">
+            <p id="gra">Randomize</p>
+            <p id="sort">Perform Sort</p>
+        </div>
+        <div class="header-right">
+            <p class="active" id="qsort">Quick Sort</p>
+            <p id="msort">Merge Sort</p>
+            <p id="hsort">Heap Sort</p>
+            <p id="bsort">Bubble Sort</p>
+            <p id="isort">Insertion Sort</p>
+            <p id="ssort">Selection Sort</p>
+            <p id="rsort">Radix Sort</p>
+        </div>
+    </div>
+    <div class="logos">
+        <br><br><br>
+        <a href="https://github.com/Biplab-Roy"><img src="photos/github.png" alt="github" height="50px" width="50px"></a><br><br><br>
+        <a href="https://www.linkedin.com/in/biplab-roy-4b63b316a/"><img src="photos/linkedin.png" alt="linkedin" height="50px" width="50px"></a><br><br><br>
+        <a href="https://www.facebook.com/profile.php?id=100008888882996"><img src="photos/facebook.png" alt="facebook" height="50px" width="50px"></a><br><br><br>
+        <a href="https://spamdetectormodel.herokuapp.com/"><img src="photos/other.jpg" alt="other projects" height="50px" width="70px"></a><br><br><br>
+    </div>
+    <div class="graph_container" id="con">
+    </div>
+    <script src="js/sortAlgorithms.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

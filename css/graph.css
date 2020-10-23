@@ -1,0 +1,19 @@
+.graph_container {
+    position: absolute;
+    width: 80%;
+    margin: 0 10%;
+    float: right;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+}
+.bar {
+    background-color: blue;
+    display: inline-block;
+    margin: 0 1px;
+    align-self: flex-end;
+    bottom: 0px;
+}
+.action {
+    margin: auto;
+}
