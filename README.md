@@ -84,7 +84,10 @@ Since we are traversing the array `n` times so complexity is O(n<sup>2</sup>). B
 
 Visualization:
 
-<iframe width="360" height="179" style="position:absolute;top:0;left:0;" frameBorder="0" src="https://imgflip.com/embed/50z92o"></iframe>
+
+https://user-images.githubusercontent.com/47073892/110483585-e025d380-810f-11eb-9593-7dceff537a93.mp4
+
+
 
 ***
 ## **2. Insertion Sort**
@@ -106,6 +109,12 @@ function InsertionSort(arr,len){
 Since we are traversing the array `n` times so complexity is O(n<sup>2</sup>). But consider the case when array is sorted then in the inner `for` loop the condition `arr[j-1]>arr[j]` will always fail. So the algorithm will end up with complexity O(n) as Best case.
 
 Visualization:
+
+
+https://user-images.githubusercontent.com/47073892/110483769-0c415480-8110-11eb-9822-4ac2171bc4f4.mp4
+
+
+
 ***
 ## **2. Selection Sort**
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Selection sort algorithm base on a very basic concept that every time smallest number will be picked up from unsorted array and it will be placed to it's right position in sorted array. The best part about the algorithm is it makes O(n) swaps while insertion and bubble sort makes O(n<sup>2</sup>) swaps. This algorithm can work better where memory writing is a costly operation. <br><br>
@@ -126,6 +135,9 @@ function insertionSort(arr,len){
 Since we are traversing the array `n` times so complexity is O(n<sup>2</sup>). It don't have any best cases even if array is already sorted it will take same time. 
 
 Visualization:
+
+
+https://user-images.githubusercontent.com/47073892/110483847-1f542480-8110-11eb-9f80-3645cffe504a.mp4
 
 
 
