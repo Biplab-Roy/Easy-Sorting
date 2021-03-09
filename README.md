@@ -84,7 +84,7 @@ Since we are traversing the array `n` times so complexity is O(n<sup>2</sup>). B
 
 Visualization:
 
-<div style="width:360px;max-width:100%;"><div style="height:0;padding-bottom:49.72%;position:relative;"><iframe width="360" height="179" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameBorder="0" src="https://imgflip.com/embed/50z92o"></iframe></div><p><a href="https://imgflip.com/gif/50z92o">via Imgflip</a></p></div>
+<iframe width="360" height="179" style="position:absolute;top:0;left:0;" frameBorder="0" src="https://imgflip.com/embed/50z92o"></iframe>
 
 ***
 ## **2. Insertion Sort**
