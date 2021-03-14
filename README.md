@@ -35,7 +35,7 @@ Best case of an algorithm represents what is the minimum time the algorithm requ
 
 - ## &nbsp;&nbsp;&nbsp;&nbsp;  Average Case
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Average case of an algorithm represents how much time an algorithm taken to sort n objects given in random order. It is most widely used for deciding the efficiency of an algorithm. In words these complexity also termed as logarithmic (O(logn)), linear (O(n)), quadratic (O(n<sup>2</sup>)), etc.
+Average case of an algorithm represents how much time an algorithm taken to sort n objects given in random order. It is most widely used for deciding the efficiency of an algorithm. In words these complexity also termed as logarithmic (`O(logn)`), linear (`O(n`)), quadratic (`O(n`<sup>`2`</sup>`)`), etc.
 <br>
 
 - ## &nbsp;&nbsp;&nbsp;&nbsp;  Worst Case
@@ -58,3 +58,137 @@ A sorting algorithm is said to be stable if two equal objects  appear in the sam
 &nbsp;&nbsp;&nbsp;&nbsp;
 Now let discuss about sorting algorithms one by one. 
 ***
+## **1. Bubble Sort**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Bubble Sort is the most basic sorting algorithm. Here the main concept is to compare between pair of objects and place them in their right place. The idea is to perform the task for `n-1` time to achieve sorted list.  <br><br>
+Algorithm :
+```javascript
+function BubbleSort(list, n){
+    var flag=1;
+    for(var i=0;i<n;i++){
+        flag=1;
+        for(var j=0;j<n-i-1;j++){
+            if(arr[j+1]<arr[j]){
+                flag=0;
+                var temp = arr[j+1];
+                arr[j+1] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        if(flag==1) break;
+    }
+    print arr;
+} 
+```
+Since we are traversing the array `n` times so complexity is `O(n`<sup>`2`</sup>`)`. But consider the case when array is sorted then it is sure that no swap will be performed. `Flag` variable used to consider swap flow. If array is sorted then no comparison will happen so It will end up with having complexity `O(n)`. It is best case complexity of the algorithm. No extra space is needed for the algorithm.
+
+Visualization:
+
+
+***
+## **2. Insertion Sort**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Insertion sort is a simple sorting algorithm that works similar to the way you sort playing cards in your hands. The array always consist of two parts, one is sorted and another is unsorted. We take a specific element from unsorted array and place it at the proper position in sorted array. This algorithm can work better where given list is semi-sorted. <br><br>
+Algorithm :
+
+```javascript
+function InsertionSort(arr,len){
+    for(var i=0;i<len-1;i++){
+        for(var j=i+1;j>0 && arr[j-1]>arr[j];j--){
+            var temp = arr[j-1];
+            arr[j-1] = arr[j];
+            arr[j] = temp;
+        }
+    }
+    print arr;
+}
+```
+Since we are traversing the array `n` times so complexity is `O(n`<sup>`2`</sup>`)`. But consider the case when array is sorted then in the inner `for` loop the condition `arr[j-1]>arr[j]` will always fail. So the algorithm will end up with complexity `O(n)` as Best case.
+
+Visualization:
+***
+## **3. Selection Sort**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Selection sort algorithm base on a very basic concept that every time smallest number will be picked up from unsorted array and it will be placed to it's right position in sorted array. The best part about the algorithm is it makes `O(n)` swaps while insertion and bubble sort makes `O(n`<sup>`2`</sup>`)` swaps. This algorithm can work better where memory writing is a costly operation. <br><br>
+Algorithm :
+
+```javascript
+function selectionSort(arr,len){
+    for(var i=0;i<len-1;i++){
+        var min=i;
+        var prev=-1;
+        for(var j=i;j<len;j++){
+            if(arr[j]<arr[min]){
+                min=j;
+                prev = min;
+            }
+        }
+        var temp = arr[i];
+        arr[i] = arr[min];
+        arr[min] = temp;
+    }
+    return arr;
+}
+```
+Since we are traversing the array `n` times so complexity is `O(n`<sup>`2`</sup>`)`. It don't have any best cases even if array is already sorted it will take same time. 
+
+Visualization:
+
+
+## **4. Merge Sort**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Merge Sort is a Divide and Conquer algorithm. The main concept behind merge sort is it keeps dividing the array in to subpart until size become `1`. Then considering each sub array as sorted [`Merge two sorted array`](https://www.geeksforgeeks.org/merge-two-sorted-arrays/) algorithm is used to merge. Merge sort also works good with linked list. Merging two sorted array takes `O(n)` time. Since the array divided into two equal halves so, recusive call made `O(logn)` times. That's how complexity of merge sort becomes `O(nlogn)`. Best case and Worst case is same for merge sort. The only disadvantage of merge sort is it requires extra space for merging two array. So, space complexity of merge sort becomes `O(n)`.
+<br><br>
+Algorithm :
+
+```javascript
+function merge(arr,start,mid,end){
+    var i=start, j=mid, k=0;
+    var newarr = [];
+    while(i<mid && j<end){
+        if(arr[i]<arr[j]){
+            newarr[k]=arr[i];
+            i++;
+            k++;
+        }
+        else{
+            newarr[k] = arr[j];
+            j++;
+            k++;
+        }
+    }
+    while(i<mid){
+        newarr[k]=arr[i];
+        i++;
+        k++;
+    }
+        newarr[k] = arr[j];
+        j++;
+        k++;
+    }
+    for(var i=0;i<k;i++){
+        arr[i+start] = newarr[i];
+    }
+}
+
+function divide(arr,start,end){
+    if(end<=start+1){
+        return;
+    }
+    var mid = Math.floor((start+end)/2);
+    divide(arr,start,mid);
+    divide(arr,mid,end);
+    merge(arr,start,mid,end);
+    return arr;
+}
+
+function mergeSort(arr,len){
+    divide(arr,0,len)
+}
+
+```
+
+Visualization:
+
+
+
+
+
