@@ -82,7 +82,7 @@ function BubbleSort(list, n){
 ```
 Since we are traversing the array `n` times so complexity is `O(n`<sup>`2`</sup>`)`. But consider the case when array is sorted then it is sure that no swap will be performed. `Flag` variable used to consider swap flow. If array is sorted then no comparison will happen so It will end up with having complexity `O(n)`. It is best case complexity of the algorithm. No extra space is needed for the algorithm.
 
-Visualization:
+[Visualization](https://biplab-roy.github.io/Easy-Sorting/)
 
 
 ***
@@ -104,7 +104,7 @@ function InsertionSort(arr,len){
 ```
 Since we are traversing the array `n` times so complexity is `O(n`<sup>`2`</sup>`)`. But consider the case when array is sorted then in the inner `for` loop the condition `arr[j-1]>arr[j]` will always fail. So the algorithm will end up with complexity `O(n)` as Best case.
 
-Visualization:
+[Visualization](https://biplab-roy.github.io/Easy-Sorting/)
 ***
 ## **3. Selection Sort**
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Selection sort algorithm base on a very basic concept that every time smallest number will be picked up from unsorted array and it will be placed to it's right position in sorted array. The best part about the algorithm is it makes `O(n)` swaps while insertion and bubble sort makes `O(n`<sup>`2`</sup>`)` swaps. This algorithm can work better where memory writing is a costly operation. <br><br>
@@ -130,9 +130,8 @@ function selectionSort(arr,len){
 ```
 Since we are traversing the array `n` times so complexity is `O(n`<sup>`2`</sup>`)`. It don't have any best cases even if array is already sorted it will take same time. 
 
-Visualization:
-
-
+[Visualization](https://biplab-roy.github.io/Easy-Sorting/)
+***
 ## **4. Merge Sort**
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Merge Sort is a Divide and Conquer algorithm. The main concept behind merge sort is it keeps dividing the array in to subpart until size become `1`. Then considering each sub array as sorted [`Merge two sorted array`](https://www.geeksforgeeks.org/merge-two-sorted-arrays/) algorithm is used to merge. Merge sort also works good with linked list. Merging two sorted array takes `O(n)` time. Since the array divided into two equal halves so, recusive call made `O(logn)` times. That's how complexity of merge sort becomes `O(nlogn)`. Best case and Worst case is same for merge sort. The only disadvantage of merge sort is it requires extra space for merging two array. So, space complexity of merge sort becomes `O(n)`.
@@ -186,9 +185,123 @@ function mergeSort(arr,len){
 
 ```
 
-Visualization:
+[Visualization](https://biplab-roy.github.io/Easy-Sorting/)
+
+***
+## **5. Quick Sort**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Like Merge Sort, QuickSort is a Divide and Conquer algorithm. It picks an element as pivot and partitions the given array around the picked pivot. There are many different versions of quickSort that pick pivot in different ways. 
+1. Always pick first element as pivot.
+2. Always pick last element as pivot (implemented below)
+3. Pick a random element as pivot.
+4. Pick median as pivot.
+   
+The key process in quickSort is `partition()`. Target of partitions is, given an array and an element `x` of array as pivot, put `x` at its correct position in sorted array and put all smaller elements (smaller than `x`) before `x`, and put all greater elements (greater than `x`) after `x`. All this should be done in linear time. Now we can divide the array into two subarray (left side of `x` and right side of `x`) then we can perform the same process again. Assuming `x` divides the array into two equal halves recursion depth of parition will be `logn`. So complexity of the algorithm becomes `O(nlogn)`. There is a loophole what if the pivot don't divide the array into two equal halves then as a result recursion depth increases. That's how complexity of the algorithm can be increased to highest `O(n`<sup>`2`</sup>`)`. It happens when out choosen pivot is the smallest or largest of the subarray. Now let's look at the algorithm.
+<br><br>
+Algorithm :
+
+```javascript
+function quickSort(arr,start,end){
+    if(end<=start){
+        return;
+    }
+    var pivot=arr[start];
+    var i = start+1, j = start+1;
+    while(j<end){
+        if(pivot>=arr[j]){
+            var temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i++;
+        }
+        j++;
+    }
+    var temp = arr[i-1];
+    arr[i-1] = arr[start];
+    arr[start] = temp;
+    quickSort(arr,start,i-1);
+    quickSort(arr,i,end);
+}
+call quickSort(arr,0,arr.length)
+```
+
+[Visualization](https://biplab-roy.github.io/Easy-Sorting/)
+
+***
+## **6. Heap Sort**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Heap sort is a comparison based sorting technique based on Binary Heap data structure. Binary Heap a well known data structure also used as priority queue. We can get largest/smallest element from a heap in `O(1)` time. Now we can remove the element then a heapify process happens to build the heap. This heapify process takes `O(logn)` times. for n elements to get smallest/largest element every time we will have total complexity as `O(nlogn)`. Building initial Binary heap also takes `O(n)`. To know more about Binary Heap [refer here](https://en.wikipedia.org/wiki/Binary_heap).
+<br><br>
+Algorithm :
+
+```javascript
+function heapify(arr,n,i){
+    var l = 2*i + 1;
+    var r = 2*i + 2;
+    var largest = i;
+    if (l<n && arr[l]>arr[largest]){
+        largest = l;
+    }
+    if (r<n && arr[r]>arr[largest]){
+        largest = r;
+    }
+    if(largest!=i){
+        var temp = arr[largest];
+        arr[largest] = arr[i];
+        arr[i] = temp;
+        heapify(arr,n,largest);
+    }
+    return;
+}
+
+function heapSort(arr,len){
+    for(var i = Math.floor(len/2); i>=0; i--){
+        heapify(arr,len,i);
+    }
+    for(var i=len-1;i>=0;i--){
+        var temp = arr[i];
+        arr[i] = arr[0];
+        arr[0] = temp;
+        heapify(arr,i, 0);
+    }
+    return arr;
+}
+```
+
+[Visualization](https://biplab-roy.github.io/Easy-Sorting/)
 
 
+***
+## **7. Radix Sort**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+In computer science, radix sort is a non-comparative sorting algorithm. It avoids comparison by creating and distributing elements into buckets according to their radix. For elements with more than one significant digit, this bucketing process is repeated for each digit, while preserving the ordering of the prior step, until all digits have been considered. So, if there are `d` digits of the largest number then the process will repeat d times and every time it will take `n` time to put all element into right bucket. So complexity of the algorithm becomes `O(nd)`. It also requires extra space of `O(n)`. Radix sort works better for wide range of inputs.
+<br><br>
+Algorithm :
+```javascript
+function radixSort(arr,len) {
+    const maxNum = Math.max(...arr.slice(0,len)) * 10;
+    let divisor = 10;
+    while (divisor < maxNum) {
+       let buckets = [...Array(10)].map(() => []);
+       for (var j=0;j<len;j++) {
+            buckets[Math.floor((arr[j] % divisor) / (divisor / 10))].push(arr[j]);
+       }
+       new_arr = [].concat.apply([], buckets);
+       for(var i=0; i<len; i++){
+            arr[i]=new_arr[i]
+       }
+       divisor *= 10;
+    }
+ }
 
+```
+[Visualization](https://biplab-roy.github.io/Easy-Sorting/)
+***
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Here is the short description of some sorting algorithms. There are also many more sorting algorithm available.
 
+## Connect me
+---
+[LinkedIn](https://www.linkedin.com/in/biplab-roy-4b63b316a/) <br>
+[Facebook](https://www.facebook.com/profile.php?id=100008888882996)
